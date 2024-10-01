@@ -9,6 +9,7 @@ part 'requests/game_answer_req.dart';
 part 'requests/game_draw_req.dart';
 part 'requests/game_end_turn_req.dart';
 part 'requests/game_enter_req.dart';
+part 'requests/game_ping_req.dart';
 part 'requests/game_quick_start_req.dart';
 part 'requests/game_reaction_req.dart';
 part 'requests/game_restart_req.dart';
