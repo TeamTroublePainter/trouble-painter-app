@@ -21,7 +21,7 @@ class GameRepositoryImpl implements GameRepository {
     required Uri uri,
     required Duration timeout,
   }) async {
-    return webSocketSource.connect(uri.toString(), timeout);
+    return webSocketSource.connect(uri.toString(), timeout: timeout);
   }
 
   @override

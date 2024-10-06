@@ -158,8 +158,7 @@ class GameService extends Notifier<GameState> {
       final jwt = await ref.read(GetJwtUsecase.$).call();
 
       /// Connect
-      final param = ConnectUsecaseParam(timeout);
-      final channel = await ref.read(ConnectUsecase.$).call(param);
+      final channel = await ref.read(ConnectUsecase.$).connectQuick(jwt, config.language, config.nickname);
 
       /// Listen
       if (_requestCompleter.isCompleted) {
@@ -184,13 +183,13 @@ class GameService extends Notifier<GameState> {
       );
 
       /// Request
-      _channel.send(
-        GameQuickStartReq(
-          jwt: jwt,
-          nickname: config.nickname,
-          language: config.language,
-        ),
-      );
+      // _channel.send(
+      //   GameQuickStartReq(
+      //     jwt: jwt,
+      //     nickname: config.nickname,
+      //     language: config.language,
+      //   ),
+      // );
       return _requestCompleter.future;
     } catch (e, s) {
       Logger.e("Failed to enter", e, s);
@@ -213,8 +212,7 @@ class GameService extends Notifier<GameState> {
       final jwt = await ref.read(GetJwtUsecase.$).call();
 
       /// Connect
-      final param = ConnectUsecaseParam(timeout);
-      final channel = await ref.read(ConnectUsecase.$).call(param);
+      final channel = await ref.read(ConnectUsecase.$).connectRoom(jwt, config.language, config.nickname, roomId);
 
       /// Listen
       if (_requestCompleter.isCompleted) {
@@ -239,14 +237,14 @@ class GameService extends Notifier<GameState> {
       );
 
       /// Request
-      _channel.send(
-        GameEnterReq(
-          jwt: jwt,
-          nickname: config.nickname,
-          language: config.language,
-          roomId: roomId,
-        ),
-      );
+      // _channel.send(
+      //   GameEnterReq(
+      //     jwt: jwt,
+      //     nickname: config.nickname,
+      //     language: config.language,
+      //     roomId: roomId,
+      //   ),
+      // );
       return _requestCompleter.future;
     } catch (e, s) {
       Logger.e("Failed to enter", e, s);
