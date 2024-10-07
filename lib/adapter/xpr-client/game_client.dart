@@ -29,7 +29,7 @@ class GameWebSocketClient implements GameRepositoryV2 {
     return webSocketSource.connect("${config.baseSocketUrl}/mafia/quick", headers: {
       'Authorization': 'bearer ${jwt.accessToken}',
       'locale': language.locale.languageCode,
-      'nickname': nickname,
+      'nickname': Uri.encodeComponent(nickname),
     },);
   }
 
@@ -38,7 +38,7 @@ class GameWebSocketClient implements GameRepositoryV2 {
     return webSocketSource.connect("${config.baseSocketUrl}/mafia/room", headers: {
       'Authorization': 'bearer ${jwt.accessToken}',
       'locale': language.locale.languageCode,
-      'nickname': nickname,
+      'nickname': Uri.encodeComponent(nickname),
       if (roomId != null) 'roomId': roomId,
     },);
   }
