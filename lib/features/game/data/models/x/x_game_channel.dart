@@ -27,6 +27,7 @@ class XGameChannel implements GameChannel {
   @override
   void send(GameReq req) {
     final xGameReq = switch (req) {
+      GamePingReq() => XGamePingReq(),
       GameEnterReq() => XGameEnterReq.fromEntiry(req),
       GameStartReq() => XGameStartReq.fromEntiry(req),
       GameEndTurnReq() => XGameEndTurnReq.fromEntiry(req),

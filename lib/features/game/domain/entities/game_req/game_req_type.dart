@@ -1,4 +1,5 @@
 enum GameReqType {
+  ping,
   enter,
   quickStart,
   start,

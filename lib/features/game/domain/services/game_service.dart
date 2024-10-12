@@ -10,6 +10,7 @@ import 'package:x_pr/core/utils/log/logger.dart';
 import 'package:x_pr/features/auth/domain/entities/jwt.dart';
 import 'package:x_pr/features/config/domain/entities/config.dart';
 import 'package:x_pr/features/config/domain/services/config_service.dart';
+import 'package:x_pr/features/game/data/models/x/req/x_game_req.dart';
 import 'package:x_pr/features/game/data/repositories/game_repository.dart';
 import 'package:x_pr/features/game/domain/entities/game_channel.dart';
 import 'package:x_pr/features/game/domain/entities/game_exception/game_exception.dart';
@@ -37,6 +38,7 @@ class GameService extends Notifier<GameState> {
   late StreamSubscription _exception$;
   late StreamController<GameState> _state$Ctrl;
   late StreamController<GameException> exception$Ctrl;
+  late Timer _timer;
   Completer<Result<void>> _requestCompleter = Completer();
   Config get config => ref.read(ConfigService.$);
   bool get isPlaying => state.isPlaying;
@@ -55,6 +57,7 @@ class GameService extends Notifier<GameState> {
     _state$.cancel();
     _channel$.cancel();
     _exception$.cancel();
+    _timer.cancel();
     Logger.d("🧩 🔘 Channel & stream canceled");
   }
 
@@ -149,6 +152,12 @@ class GameService extends Notifier<GameState> {
     _channel$ = ref.read(ChannelListenUsecase.$).call(param);
   }
 
+  void _startPing() {
+    _timer = Timer.periodic(const Duration(seconds: 1), (Timer timer) {
+      request(GamePingReq());
+    });
+  }
+
   /// Quick start
   Future<Result<void>> quickStart({
     Duration timeout = Constant.connectionTimeout,
@@ -174,6 +183,7 @@ class GameService extends Notifier<GameState> {
             currentRoomId = gameState.roomId;
           }
           if (_requestCompleter.isCompleted) return;
+          _startPing();
           _requestCompleter.complete(const Success(null));
         },
         exceptionCallback: (gameException) {
@@ -229,6 +239,7 @@ class GameService extends Notifier<GameState> {
             /// Init currentRoomId (create case)
             currentRoomId = gameState.roomId;
           }
+          _startPing();
           _requestCompleter.complete(const Success(null));
         },
         exceptionCallback: (gameException) {
