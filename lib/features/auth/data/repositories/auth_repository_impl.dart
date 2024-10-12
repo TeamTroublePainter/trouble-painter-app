@@ -1,3 +1,4 @@
+import 'package:x_pr/adapter/xpr-client/auth_client.dart';
 import 'package:x_pr/core/domain/entities/result.dart';
 import 'package:x_pr/features/auth/data/repositories/auth_repository.dart';
 import 'package:x_pr/features/auth/data/sources/local_auth_source.dart';
@@ -10,9 +11,12 @@ import 'package:x_pr/features/auth/domain/entities/sign_in_method.dart';
 class AuthRepositoryImpl implements AuthRepository {
   final LocalAuthSource localAuthSource;
   final RemoteAuthSource remoteAuthSource;
+  final AuthClient authClient;
+
   const AuthRepositoryImpl({
     required this.localAuthSource,
     required this.remoteAuthSource,
+    required this.authClient,
   });
 
   @override
@@ -21,18 +25,17 @@ class AuthRepositoryImpl implements AuthRepository {
   }
 
   @override
-  Future<Result<AuthState>> login(
-    IdToken idToken,
-    SignInMethod signInMethod,
-  ) async {
+  Future<Result<AuthState>> login(IdToken idToken,
+      SignInMethod signInMethod,) async {
     return switch (await remoteAuthSource.signIn(idToken, signInMethod)) {
-      Success(value: Jwt jwt) => await localAuthSource.write(
-          AuthState(
-            jwt: jwt,
-            idToken: idToken,
-            signInMethod: signInMethod,
-          ),
+      Success(value: Jwt jwt) =>
+      await localAuthSource.write(
+        AuthState(
+          jwt: jwt,
+          idToken: idToken,
+          signInMethod: signInMethod,
         ),
+      ),
       Failure(e: Object? e) => Failure(e),
       Cancel() => const Cancel(),
     };
@@ -48,7 +51,11 @@ class AuthRepositoryImpl implements AuthRepository {
   }
 
   @override
-  Future<Result<Jwt>> refreshAccessToken(refreshToken) {
-    return remoteAuthSource.reissue(refreshToken);
+  Future<Result<AuthState>> refreshAccessToken(String refreshToken) async {
+    return switch (await authClient.reissue(refreshToken)) {
+      Success(value: Jwt jwt) => await localAuthSource.writeJwt(jwt),
+      Failure(e: Object? e) => Failure(e),
+      Cancel() => const Cancel(),
+    };
   }
 }

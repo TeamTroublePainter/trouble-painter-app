@@ -6,6 +6,7 @@ import 'package:x_pr/core/data/sources/secure_storage_source.dart';
 import 'package:x_pr/core/domain/entities/result.dart';
 import 'package:x_pr/core/utils/log/logger.dart';
 import 'package:x_pr/features/auth/domain/entities/auth_state.dart';
+import 'package:x_pr/features/auth/domain/entities/jwt.dart';
 
 class LocalAuthSource {
   static final $ = AutoDisposeProvider<LocalAuthSource>((ref) {
@@ -36,6 +37,26 @@ class LocalAuthSource {
         value: jsonEncode(authState.toJson()),
       );
       return Success(authState);
+    } catch (e, s) {
+      Logger.e("Failed to write", e, s);
+      return Failure(e);
+    }
+  }
+
+  Future<Result<AuthState>> writeJwt(Jwt jwt) async {
+    try {
+      final data = await read();
+      if(data == null) return const Cancel();
+
+      final newData = data.copyWith(
+        jwt: jwt,
+      );
+
+      await secureStorage.write(
+        key: _key,
+        value: jsonEncode(newData.toJson()),
+      );
+      return Success(newData);
     } catch (e, s) {
       Logger.e("Failed to write", e, s);
       return Failure(e);
