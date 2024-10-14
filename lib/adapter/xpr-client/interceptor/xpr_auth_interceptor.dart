@@ -83,15 +83,13 @@ class XprAuthInterceptor extends Interceptor {
     try {
       final refreshToken = _jwt?.refreshToken;
       if (refreshToken == null) {
-        _refreshCompleter?.completeError(RefreshAccessTokenException.unauthenticated);
-        return;
+        throw RefreshAccessTokenException.unauthenticated;
       }
 
       final result = await authRepository.refreshAccessToken(refreshToken);
 
       if (result is Success == false) {
-        _refreshCompleter?.completeError(RefreshAccessTokenException.unauthenticated);
-        return;
+        throw RefreshAccessTokenException.unauthenticated;
       }
 
       _jwt = (result as Success<AuthState>).value.jwt;
@@ -100,6 +98,7 @@ class XprAuthInterceptor extends Interceptor {
     } catch (e) {
       // 재로그인 중 에러 발생 시 처리
       _refreshCompleter?.completeError(e);
+      rethrow;
     } finally {
       _refreshCompleter = null;
     }
