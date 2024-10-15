@@ -32,7 +32,6 @@ class JoinButton extends StatelessWidget {
               width: 68,
               height: 68,
               fit: BoxFit.contain,
-              color: context.color.text,
             ),
           ),
           const SizedBox(height: 14),
