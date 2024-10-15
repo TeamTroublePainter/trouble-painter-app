@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:x_pr/app/pages/game/result/game_result_page_model.dart';
+import 'package:x_pr/app/pages/game/result/v2/game_quick_result_timer.dart';
 import 'package:x_pr/app/pages/game/result/v2/game_result_citizen_win.dart';
 import 'package:x_pr/app/pages/game/result/v2/game_result_mafia_win.dart';
 import 'package:x_pr/app/pages/game/result/v2/game_result_timer.dart';
@@ -53,13 +54,17 @@ class GameResultV2 extends StatelessWidget {
                     const SizedBox(height: 24),
 
                     /// Timer
-                    GameResultTimer(
-                      startedAt: state.resultStartedAt,
-                      totalMs: state.showResultMs,
-                      isMafiaWin: state.isMafiaWin,
-                    ),
-
-                    const SizedBox(height: 72),
+                   state.isQuickStartGame
+                        ? GameQuickResultTimer(
+                            startedAt: state.resultStartedAt,
+                            totalMs: state.showResultMs,
+                            isMafiaWin: state.isMafiaWin,
+                          )
+                        : GameResultTimer(
+                            startedAt: state.resultStartedAt,
+                            totalMs: state.showResultMs,
+                            isMafiaWin: state.isMafiaWin,
+                          ),
 
                     /// Canvas
                     GameResultCanvas(
