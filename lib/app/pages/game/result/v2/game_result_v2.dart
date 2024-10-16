@@ -59,6 +59,8 @@ class GameResultV2 extends StatelessWidget {
                             startedAt: state.resultStartedAt,
                             totalMs: state.showResultMs,
                             isMafiaWin: state.isMafiaWin,
+                            onClickRestart: viewModel.restartQuickGame,
+                            onEnd: viewModel.exit,
                           )
                         : GameResultTimer(
                             startedAt: state.resultStartedAt,

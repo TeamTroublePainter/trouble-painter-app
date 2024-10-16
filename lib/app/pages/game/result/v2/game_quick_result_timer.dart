@@ -10,11 +10,15 @@ class GameQuickResultTimer extends StatelessWidget {
     required this.startedAt,
     required this.totalMs,
     required this.isMafiaWin,
+    required this.onClickRestart,
+    required this.onEnd,
   });
 
   final DateTime startedAt;
   final int totalMs;
   final bool isMafiaWin;
+  final void Function() onClickRestart;
+  final void Function() onEnd;
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +43,7 @@ class GameQuickResultTimer extends StatelessWidget {
               blurRadius: 20.5, // Figma에서 설정된 Blur
             ),
           ],
-          // TODO: onPressed: viewModel.rejoinPressed,
+          onPressed: onClickRestart,
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -47,6 +51,7 @@ class GameQuickResultTimer extends StatelessWidget {
             CircularTimer(
               startedAt: startedAt,
               totalMs: totalMs,
+              onEnd: onEnd,
               builder: (secAnimation) {
                 return Text(
                   S.current.sec(secAnimation.value),
