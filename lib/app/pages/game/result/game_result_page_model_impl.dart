@@ -9,4 +9,15 @@ class GameResultPageModelImpl extends GameResultPageModel {
   void restart() {
     ref.read(GameService.$.notifier).request(GameRestartReq());
   }
+
+  @override
+  void restartQuickGame() {
+    final gameService = ref.read(GameService.$.notifier);
+    gameService.request(GameRematchingReq());
+  }
+
+  @override
+  void exit() {
+    ref.read(GameService.$.notifier).exit();
+  }
 }

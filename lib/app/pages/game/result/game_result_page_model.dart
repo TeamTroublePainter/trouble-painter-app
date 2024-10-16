@@ -32,6 +32,10 @@ abstract class GameResultPageModel extends BaseViewModel<GameResultState> {
 
   void restart();
 
+  void restartQuickGame();
+
+  void exit();
+
   /// For test
   void changeResultType() {}
 }

@@ -265,7 +265,6 @@ class GameService extends Notifier<GameState> {
         case GameDrawingState():
         case GameGuessState():
         case GameVotingState():
-        case GameResultState():
         case GameDisconnectedState():
           state = GameDisconnectedState(currentRoomId);
           return;
@@ -273,6 +272,14 @@ class GameService extends Notifier<GameState> {
         case GameQuickStartWaitingState():
           currentRoomId = null;
           state = GameDisconnectedState();
+          return;
+        case GameResultState(isQuickStartGame : final isQuickStartGame):
+          if(isQuickStartGame) {
+            currentRoomId = null;
+            state = GameDisconnectedState();
+          } else {
+            state = GameDisconnectedState(currentRoomId);
+          }
           return;
       }
     });

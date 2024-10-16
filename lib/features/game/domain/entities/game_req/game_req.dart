@@ -5,6 +5,7 @@ import 'package:x_pr/features/game/domain/entities/game_reaction.dart';
 import 'package:x_pr/features/game/domain/entities/game_req/game_req_type.dart';
 import 'package:x_pr/features/game/domain/entities/game_user.dart';
 
+part 'requests/game_rematching.dart';
 part 'requests/game_answer_req.dart';
 part 'requests/game_draw_req.dart';
 part 'requests/game_end_turn_req.dart';

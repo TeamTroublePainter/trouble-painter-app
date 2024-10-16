@@ -161,6 +161,7 @@
   "gameResultV2MafiaWin2": ".",
   "gameResultV2CitizenWin1": "\n\nWrite\n",
   "gameResultV2CitizenWin2": "\nis incorrect.",
+  "gameResultV2ReQuickGame": "New Quick Start",
   "gameResultV2TimerDesc": "you will be moved to the waiting room",
   "@_dev_page": {},
   "dev": "Developer Menu",

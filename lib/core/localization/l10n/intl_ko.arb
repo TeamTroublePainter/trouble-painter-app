@@ -161,6 +161,7 @@
   "gameResultV2MafiaWin2": "\n입니다.",
   "gameResultV2CitizenWin1": "\n\n",
   "gameResultV2CitizenWin2": "\n라고 써서 틀렸어요.",
+  "gameResultV2ReQuickGame": "새로운 매칭 바로가기",
   "gameResultV2TimerDesc": "후에 대기방으로 이동합니다",
   "@_dev_page": {},
   "dev": "개발자 메뉴",

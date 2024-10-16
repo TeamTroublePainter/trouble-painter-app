@@ -1431,6 +1431,16 @@ class S {
   }
 
   /// `후에 대기방으로 이동합니다`
+  String get gameResultV2ReQuickGame {
+    return Intl.message(
+      '새로운 매칭 바로가기',
+      name: 'gameResultV2ReQuickGame',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `후에 대기방으로 이동합니다`
   String get gameResultV2TimerDesc {
     return Intl.message(
       '후에 대기방으로 이동합니다',

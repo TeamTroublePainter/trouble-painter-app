@@ -77,13 +77,6 @@ class ChannelListenUsecase
           /// Prevent the problem of XGameQuickStartWaitingPhase passing after GameReadyState
           return;
         }
-      case GameResultState(isQuickStartGame: final isQuickStartGame):
-        if (isQuickStartGame && phase is XGameWaitingPhase) {
-          /// QuickStart games are single-player games, so go HomePage
-          gameState = GameDisconnectedState();
-          state$Ctrl.add(gameState!);
-          return;
-        }
       case GameDisconnectedState():
         return;
       default:

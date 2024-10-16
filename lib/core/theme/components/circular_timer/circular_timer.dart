@@ -16,6 +16,7 @@ class CircularTimer extends StatefulWidget {
     this.trackColor,
     this.builder,
     this.warningMs = 5000,
+    this.onEnd,
   });
 
   final DateTime startedAt;
@@ -26,6 +27,7 @@ class CircularTimer extends StatefulWidget {
   final Color? color;
   final Color? trackColor;
   final Widget Function(Animation<int> secAnimation)? builder;
+  final void Function()? onEnd;
 
   @override
   State<CircularTimer> createState() => _CircularTimerState();
@@ -78,6 +80,14 @@ class _CircularTimerState extends State<CircularTimer>
         }
       }
     });
+
+    if (widget.onEnd != null) {
+      controller.addStatusListener((status) {
+        if (status == AnimationStatus.completed) {
+          widget.onEnd?.call();
+        }
+      });
+    }
   }
 
   @override

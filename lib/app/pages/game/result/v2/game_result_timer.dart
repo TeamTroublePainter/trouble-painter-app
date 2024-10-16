@@ -52,6 +52,7 @@ class GameResultTimer extends StatelessWidget {
               color: context.color.subtext4,
             ),
           ),
+          const SizedBox(height: 72),
         ],
       ),
     );

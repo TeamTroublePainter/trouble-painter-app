@@ -29,4 +29,13 @@ class GameResultPageModelTest extends GameResultPageModel {
   void restart() {
     ref.read(GameService.$.notifier).debugStep(GameStep.waiting);
   }
+
+  @override
+  void restartQuickGame() {
+    final gameService = ref.read(GameService.$.notifier);
+    gameService.debugStep(GameStep.quickStartWaiting);
+  }
+
+  @override
+  void exit() {}
 }
