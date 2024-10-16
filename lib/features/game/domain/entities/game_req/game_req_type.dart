@@ -1,6 +1,7 @@
 enum GameReqType {
   enter,
   quickStart,
+  rematching,
   start,
   endTurn,
   vote,
