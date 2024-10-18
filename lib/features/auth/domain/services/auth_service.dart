@@ -44,9 +44,9 @@ class AuthService extends Notifier<AuthServiceState> {
           case Success(value: final jwt):
             Logger.d("🔐 AccessToken refreshed");
             state = (state as Authenticated).copyWith(
-              authState: authState.copyWith(jwt: jwt),
+              authState: authState.copyWith(jwt: jwt.jwt),
             );
-            return result;
+            return Success(result.value.jwt);
           case Failure(e: final e):
             throw e;
           case Cancel():
