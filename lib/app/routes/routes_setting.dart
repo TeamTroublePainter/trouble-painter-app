@@ -107,6 +107,18 @@ class RoutesSetting {
         builder: (context, state) => const NicknamePage(),
       ),
 
+
+      /// login
+      GoRoute(
+        path: '/login',
+        name: Routes.loginPage.name,
+        pageBuilder: (context, state) => const DialogPage(
+          route: Routes.loginPage,
+          barrierDismissible: false,
+          child: LoginBottomSheet(),
+        ),
+      ),
+
       /// HomePage
       GoRoute(
         path: '/home',

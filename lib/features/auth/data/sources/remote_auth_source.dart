@@ -19,6 +19,7 @@ class RemoteAuthSource {
 
   final Dio dio;
   final Config Function() getConfig;
+
   const RemoteAuthSource({
     required this.dio,
     required this.getConfig,
@@ -30,9 +31,23 @@ class RemoteAuthSource {
     try {
       switch (signInMethod) {
         case SignInMethod.google:
-          throw UnimplementedError();
+          final res = await dio.post(
+            getUrl("/api/v1/auth/signin"),
+            data: {
+              "authType": "GOOGLE_ID_TOKEN",
+              "token": idToken,
+            },
+          );
+          return Success(Jwt.fromJson(res.data));
         case SignInMethod.apple:
-          throw UnimplementedError();
+          final res = await dio.post(
+            getUrl("/api/v1/auth/signin"),
+            data: {
+              "authType": "APPLE_ID_TOKEN",
+              "token": idToken,
+            },
+          );
+          return Success(Jwt.fromJson(res.data));
         case SignInMethod.anonymous:
           final res = await dio.post(getUrl("/api/v1/auth/anonymous-signin"));
           return Success(Jwt.fromJson(res.data));

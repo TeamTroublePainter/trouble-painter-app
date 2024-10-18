@@ -7,6 +7,7 @@ enum FirebaseAnalyticsScreen {
   update_dialog,
   maintenance_dialog,
   nickname_page,
+  login_page,
   home_page,
   onboarding_page,
   notice_dialog,
@@ -37,6 +38,7 @@ enum FirebaseAnalyticsScreen {
       Routes.splashPage => splash_page,
       Routes.updateDialog => update_dialog,
       Routes.maintenanceDialog => maintenance_dialog,
+      Routes.loginPage => login_page,
       Routes.nicknamePage => nickname_page,
       Routes.homePage => home_page,
       Routes.onboardingPage => onboarding_page,
@@ -67,6 +69,7 @@ enum FirebaseAnalyticsScreen {
       Routes.devComponentPage => throw UnimplementedError(),
       Routes.devLogoutDialog => throw UnimplementedError(),
       Routes.devLoginBottomSheet => throw UnimplementedError(),
+      // TODO: Handle this case.
     };
   }
 
