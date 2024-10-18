@@ -39,9 +39,8 @@ class GameResultCitizenWin extends StatelessWidget {
             ),
 
             /// Pencil
-            AssetImg(
+            const AssetImg(
               'result_citizen_1',
-              color: mafia.color,
               width: double.infinity,
               fit: BoxFit.fitWidth,
             ),
