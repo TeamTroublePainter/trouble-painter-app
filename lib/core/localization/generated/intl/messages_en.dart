@@ -235,6 +235,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "leave": MessageLookupByLibrary.simpleMessage("Leave"),
         "localDataPageTitle":
             MessageLookupByLibrary.simpleMessage("Local Data"),
+        "loginAgreement1": MessageLookupByLibrary.simpleMessage(
+            "Upon first login, you are deemed to have agreed to the "),
+        "loginAgreement2": MessageLookupByLibrary.simpleMessage("."),
         "loginFailure":
             MessageLookupByLibrary.simpleMessage("Please try again 🥹"),
         "loginPage": MessageLookupByLibrary.simpleMessage("Login Page"),
@@ -243,11 +246,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "loginSuccess":
             MessageLookupByLibrary.simpleMessage("Nice to meet you 👋"),
         "loginWithAnonymous":
-            MessageLookupByLibrary.simpleMessage("Sign in with Anonymous"),
+            MessageLookupByLibrary.simpleMessage("Guest Sign In"),
         "loginWithApple":
-            MessageLookupByLibrary.simpleMessage("Sign in with Apple"),
+            MessageLookupByLibrary.simpleMessage("Continue in with Apple"),
         "loginWithGoogle":
-            MessageLookupByLibrary.simpleMessage("Sign in with Google"),
+            MessageLookupByLibrary.simpleMessage("Continue with Google"),
         "logout": MessageLookupByLibrary.simpleMessage("Sign Out"),
         "logoutDialogTitle":
             MessageLookupByLibrary.simpleMessage("Do you want to logout?"),
@@ -331,8 +334,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Suggest Keywords"),
         "settingTheme": MessageLookupByLibrary.simpleMessage("Theme"),
         "settingVersion": MessageLookupByLibrary.simpleMessage("Version"),
-        "termsOfService":
-            MessageLookupByLibrary.simpleMessage("Terms of Service"),
+        "termsOfService": MessageLookupByLibrary.simpleMessage(
+            "service terms and conditions"),
         "tryAgain": MessageLookupByLibrary.simpleMessage("Try again"),
         "updateDialogGoToUpdate":
             MessageLookupByLibrary.simpleMessage("Go To Update")

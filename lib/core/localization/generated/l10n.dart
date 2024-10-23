@@ -300,6 +300,26 @@ class S {
     );
   }
 
+  /// `첫 로그인 시, `
+  String get loginAgreement1 {
+    return Intl.message(
+      '첫 로그인 시, ',
+      name: 'loginAgreement1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `에 동의한 것으로 간주합니다.`
+  String get loginAgreement2 {
+    return Intl.message(
+      '에 동의한 것으로 간주합니다.',
+      name: 'loginAgreement2',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `업데이트하러 가기`
   String get updateDialogGoToUpdate {
     return Intl.message(
@@ -820,30 +840,30 @@ class S {
     );
   }
 
-  /// `구글 로그인`
+  /// `구글로 계속하기`
   String get loginWithGoogle {
     return Intl.message(
-      '구글 로그인',
+      '구글로 계속하기',
       name: 'loginWithGoogle',
       desc: '',
       args: [],
     );
   }
 
-  /// `애플 로그인`
+  /// `애플로 계속하기`
   String get loginWithApple {
     return Intl.message(
-      '애플 로그인',
+      '애플로 계속하기',
       name: 'loginWithApple',
       desc: '',
       args: [],
     );
   }
 
-  /// `익명 로그인`
+  /// `게스트로 시작하기`
   String get loginWithAnonymous {
     return Intl.message(
-      '익명 로그인',
+      '게스트로 시작하기',
       name: 'loginWithAnonymous',
       desc: '',
       args: [],

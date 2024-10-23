@@ -18,6 +18,7 @@ import 'package:x_pr/app/pages/join/join_page.dart';
 import 'package:x_pr/app/pages/join_qr/join_qr_page.dart';
 import 'package:x_pr/app/pages/login/bottom_sheets/login_bottom_sheet.dart';
 import 'package:x_pr/app/pages/login/dialogs/logout_dialog.dart';
+import 'package:x_pr/app/pages/login/login_page.dart';
 import 'package:x_pr/app/pages/nickname/nickname_page.dart';
 import 'package:x_pr/app/pages/notice/notice_page.dart';
 import 'package:x_pr/app/pages/setting/app_license/app_license_detail/app_license_detail_page.dart';
@@ -115,7 +116,7 @@ class RoutesSetting {
         pageBuilder: (context, state) => const DialogPage(
           route: Routes.loginPage,
           barrierDismissible: false,
-          child: LoginBottomSheet(),
+          child: LoginPage(),
         ),
       ),
 

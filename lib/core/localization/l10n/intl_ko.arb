@@ -28,6 +28,8 @@
   "nicknameHint": "닉네임 입력",
   "nicknameAgreement1": "닉네임 입력 시 ",
   "nicknameAgreement2": "에 동의한 것으로 간주합니다.",
+  "loginAgreement1": "첫 로그인 시, ",
+  "loginAgreement2": "에 동의한 것으로 간주합니다.",
   "@_update_dialog": {},
   "updateDialogGoToUpdate": "업데이트하러 가기",
   "@_notice_dialog": {},
@@ -90,9 +92,9 @@
   "@_login_page": {},
   "loginPage": "로그인 페이지",
   "loginPageTitle": "간편 회원가입 후 동료들에게 공유해 보세요!",
-  "loginWithGoogle": "구글 로그인",
-  "loginWithApple": "애플 로그인",
-  "loginWithAnonymous": "익명 로그인",
+  "loginWithGoogle": "구글로 계속하기",
+  "loginWithApple": "애플로 계속하기",
+  "loginWithAnonymous": "게스트로 시작하기",
   "loginSuccess": "반가워요 👋",
   "loginFailure": "다시 시도해 주세요 🥹",
   "@_logout_dialog": {},
