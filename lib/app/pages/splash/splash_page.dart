@@ -46,7 +46,8 @@ class SplashPage extends StatelessWidget {
             context.goNamed(
               viewModel.goToNickname
                   ? Routes.nicknamePage.name
-                  : Routes.homePage.name,
+                  : Routes.loginPage.name,
+                  // : Routes.homePage.name,
             );
             return;
         }

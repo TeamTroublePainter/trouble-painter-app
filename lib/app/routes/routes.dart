@@ -9,6 +9,9 @@ enum Routes {
   updateDialog,
   maintenanceDialog,
 
+  /// Auth
+  loginPage,
+
   /// Nickname
   nicknamePage,
 
