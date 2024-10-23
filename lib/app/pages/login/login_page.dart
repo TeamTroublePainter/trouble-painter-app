@@ -18,6 +18,21 @@ class LoginPage extends StatelessWidget {
       body: BaseView(
         viewModel: LoginButtonModel.new,
         state: (ref, prevState) => BaseViewState.init,
+        onStateChanged: (ref, viewModel, state, oldState) {
+          switch (state) {
+            case BaseViewState.success:
+              context.goNamed(
+                viewModel.hasNickname
+                    ? Routes.nicknamePage.name
+                    : Routes.homePage.name,
+              );
+              break;
+            case BaseViewState.failure:
+              break;
+            default:
+              break;
+          }
+        },
         builder: (ref, viewModel, state) => Column(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [

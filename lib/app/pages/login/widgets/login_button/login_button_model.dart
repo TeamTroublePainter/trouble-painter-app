@@ -35,4 +35,8 @@ class LoginButtonModel extends BaseViewModel<BaseViewState> {
     /// Send event
     analyticsService.sendEvent(NicknamePageTermsOfServiceClickEvent());
   }
+
+  bool get hasNickname {
+    return config.nickname.trim().isEmpty;
+  }
 }

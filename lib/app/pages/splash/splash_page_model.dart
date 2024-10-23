@@ -12,6 +12,7 @@ class SplashPageModel extends BaseViewModel<SplashPageState> {
   SplashPageModel(super.initState);
 
   Config get config => ref.read(ConfigService.$);
+  AuthServiceState get authState => ref.read(AuthService.$);
 
   Future<void> init({
     required Language platformLanguage,
@@ -44,8 +45,12 @@ class SplashPageModel extends BaseViewModel<SplashPageState> {
     }
   }
 
-  bool get goToNickname {
-    return config.isFirstRun || config.nickname.trim().isEmpty;
+  bool get hasAccessToken {
+    return authState is Authenticated;
+  }
+
+  bool get hasNickname {
+    return config.nickname.trim().isEmpty;
   }
 
   bool _isUpdateRequired() {
