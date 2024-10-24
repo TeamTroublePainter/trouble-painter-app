@@ -75,32 +75,6 @@ class NicknamePage extends StatelessWidget {
               ),
             ),
 
-            /// Terms of service
-            termsOfService: GestureDetector(
-              onTap: viewModel.showTermsOfService,
-              child: AutoSizeText.rich(
-                TextSpan(
-                  children: [
-                    TextSpan(text: S.current.nicknameAgreement1),
-                    TextSpan(
-                      text: S.current.termsOfService,
-                      style: TextStyle(
-                        decoration: TextDecoration.underline,
-                        decorationColor: context.color.subtext5,
-                      ),
-                    ),
-                    TextSpan(text: S.current.nicknameAgreement2),
-                  ],
-                ),
-                maxLines: 1,
-                minFontSize: 6,
-                textAlign: TextAlign.center,
-                style: context.typo.caption1.copyWith(
-                  color: context.color.subtext5,
-                ),
-              ),
-            ),
-
             /// Complete button
             submitButton: Button(
               margin: const EdgeInsets.only(

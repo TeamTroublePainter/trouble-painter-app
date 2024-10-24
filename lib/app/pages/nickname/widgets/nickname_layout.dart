@@ -11,13 +11,11 @@ class NicknameLayout extends StatelessWidget {
     super.key,
     required this.title,
     required this.input,
-    required this.termsOfService,
     required this.submitButton,
   });
 
   final Widget title;
   final Widget input;
-  final Widget termsOfService;
   final Button submitButton;
 
   @override
@@ -49,22 +47,6 @@ class NicknameLayout extends StatelessWidget {
                   ],
                 ),
               ),
-            ),
-
-            /// Terms of service
-            Padding(
-              padding: EdgeInsets.only(
-                left: 20,
-                right: 20,
-                bottom: context.responsiveH(
-                  0,
-                  small: max(
-                    0,
-                    context.keyboardHeight - submitButton.size.height - 14,
-                  ),
-                ),
-              ),
-              child: termsOfService,
             ),
 
             /// Submit button
